@@ -47,11 +47,11 @@ const scanning = async () => {
 }
 
 const processTest = (text) => {
+    console.log(scannerStack)
     if(scannerStack.length < 10){
         scannerStack.push(text)
     }else{
         scannerStack.push(text)
-        console.log(scannerStack)
         if(every( (val, i, arr) => val === arr[0] )){
             console.log("ANSDOAWUUAEBFUABABFUABEFUBAEUFAEUFHAUEFAUH")
             alert(text)
