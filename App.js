@@ -20,7 +20,7 @@ const indOffsetLeft = (window.innerWidth / 2) - (indWidth / 2);
 
 
 //scannerStack
-const scannerStack = {}
+const scannerStack = []
 
 const worker = Tesseract.createWorker();
 
@@ -51,6 +51,7 @@ const processTest = (text) => {
         scannerStack.push(text)
     }else{
         scannerStack.push(text)
+        console.log(scannerStack)
         if(every( (val, i, arr) => val === arr[0] )){
             console.log("ANSDOAWUUAEBFUABABFUABEFUBAEUFAEUFHAUEFAUH")
             alert(text)
