@@ -20,7 +20,7 @@ const indOffsetLeft = (window.innerWidth / 2) - (indWidth / 2);
 
 
 //scannerStack
-const scannerStack = []
+const scannerStack = [0,1,3,2]
 
 const worker = Tesseract.createWorker();
 
@@ -46,17 +46,10 @@ const scanning = async () => {
     requestAnimationFrame(tick)
 }
 
-const processTest = (text) => {
-    console.log(scannerStack)
-    if(scannerStack.length < 10){
-        scannerStack.push(text)
-    }else{
-        scannerStack.push(text)
-        if(every( (val, i, arr) => val === arr[0] )){
-            console.log("ANSDOAWUUAEBFUABABFUABEFUBAEUFAEUFHAUEFAUH")
-            alert(text)
-        }
-        scannerStack.shift()
+const processTest = async (words) => {
+    console.log(words[0].choices[0].text)
+    if(words[0].choices[0].text === 'SEINZ.'){
+        alert(words[0].choices[0].text)
     }
 }
 
@@ -84,11 +77,11 @@ const tick = async () => {
 
 
     // tesseract
-    const { data: { text } } = await worker.recognize(canvasTest);
+    const { data: { words } } = await worker.recognize(canvasTest);
     //const regex = /[a-zA-Z0-9]/gi;
     //const scannedText = text && text.match(regex) && text.match(regex).filter(x => x).join("");
 
-    processTest(text)
+    processTest(words)
     requestAnimationFrame(tick);
     
 }
