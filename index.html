@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>TesseractScanner</title>
+</head>
+<body>
+    <section>
+        <header>
+            <h1>VisitorScan</h1>
+        </header>
+    </section>
+
+    <section>
+        <div class="mediaBox">
+            <video playsinline autoplay muted id="camera-video"></video>
+            <div class="scanBorder"></div>
+        </div>
+    </section>
+    <canvas id="testcanvas"></canvas>
+    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+    <script type="module" src="App.js"></script>
+</body>
+</html>
