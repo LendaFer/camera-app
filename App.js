@@ -52,6 +52,7 @@ const processTest = (text) => {
     }else{
         scannerStack.push(text)
         if(every( (val, i, arr) => val === arr[0] )){
+            console.log("ANSDOAWUUAEBFUABABFUABEFUBAEUFAEUFHAUEFAUH")
             alert(text)
         }
         scannerStack.shift()
