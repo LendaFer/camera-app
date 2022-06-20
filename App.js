@@ -19,6 +19,9 @@ const indOffsetTop = vidOffsetTop + (vidHeight / 2) - (indHeight / 2); // is cen
 const indOffsetLeft = (window.innerWidth / 2) - (indWidth / 2);
 
 
+//scannerStack
+const scannerStack = {}
+
 const worker = Tesseract.createWorker();
 
 
@@ -42,6 +45,19 @@ const scanning = async () => {
     await worker.initialize("eng")
     requestAnimationFrame(tick)
 }
+
+const processTest = (text) => {
+    if(scannerStack.length < 10){
+        scannerStack.push(text)
+    }else{
+        scannerStack.push(text)
+        if(every( (val, i, arr) => val === arr[0] )){
+            alert(text)
+        }
+        scannerStack.shift()
+    }
+}
+
 
 const tick = async () => {
     const canvas = document.createElement("canvas");
@@ -69,7 +85,8 @@ const tick = async () => {
     const { data: { text } } = await worker.recognize(canvasTest);
     //const regex = /[a-zA-Z0-9]/gi;
     //const scannedText = text && text.match(regex) && text.match(regex).filter(x => x).join("");
-    console.log(text);
+
+    processTest(text)
     requestAnimationFrame(tick);
     
 }
