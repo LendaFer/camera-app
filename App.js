@@ -94,6 +94,7 @@ const processTest = async (lines) => {
     if(names.includes(name)){
         console.log(name)
         console.log(company)
+        console.log("TEST")
         if(companys[names.indexOf(name)] == company){
             alert(name)
         }        
