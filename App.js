@@ -37,7 +37,7 @@ const testing = async () => {
 
 const scanning = async () => {
     console.log("test")
-    const stream = await navigator.mediaDevices.getUserMedia({video: { facingMode: "environment" },audio: false})
+    const stream = await navigator.mediaDevices.getUserMedia({video: { facingMode: "environment", focusMode: "auto" },audio: false})
     video.srcObject = stream
     video.play()
     await worker.load()
