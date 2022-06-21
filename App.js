@@ -86,11 +86,15 @@ const scanning = async () => {
 }
 
 const processTest = async (lines) => {
-    console.log(lines[0].text)
-    console.log(lines[-1].text)
-    if(names.includes(lines[0].text)){
-        if(companys[names.indexOf(lines[0].text)]){
-            alert(lines[0].text)
+    const line1 = lines[0].text
+    const name = line1.substring(0, line1.length-1)
+    const line2 = lines[1].text
+    const company = line2.substring(0, line2.length-1)
+    if(names.includes(name)){
+        console.log(name)
+        console.log(company)
+        if(companys[names.indexOf(name)] == company){
+            alert(name)
         }        
     }
 }
