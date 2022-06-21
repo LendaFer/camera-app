@@ -1,3 +1,42 @@
+//Hardcoded example people
+const data = [
+    {person:{
+        name: "Nils Folkerts",
+        company: "CGI"
+    }},
+    {person:{
+        name: "Matthias Folkerts",
+        company: "CGI"
+    }},
+    {person:{
+        name: "Carsten Müller",
+        company: "HHU"
+    }},
+    {person:{
+        name: "Albert Einstein",
+        company: "Long Complicated Company Name"
+    }},
+    {person:{
+        name: "Simone de Beauvoir",
+        company: "Philosophy"
+    }},
+    {person:{
+        name: "Mandelbrot",
+        company: "Mathematic"
+    }}
+]
+
+const names = data.map(obj => obj.person.name)
+const companys = data.map(obj => obj.person.company)
+/*console.log(names)
+if(names.includes("Nils Folkerts")){
+    if(companys[names.indexOf("Nils Folkerts")] == "Company"){
+        console.log("YES")
+    }
+}*/
+
+
+
 const video = document.getElementById("camera-video")
 const container = document.querySelector(".container")
 const mediaBox = document.querySelector(".mediaBox")
@@ -46,10 +85,13 @@ const scanning = async () => {
     requestAnimationFrame(tick)
 }
 
-const processTest = async (words) => {
-    console.log(words[0].choices[0].text)
-    if(words[0].choices[0].text === 'SEINZ.'){
-        alert(words[0].choices[0].text)
+const processTest = async (lines) => {
+    console.log(lines[0].text)
+    console.log(lines[-1].text)
+    if(names.includes(lines[0].text)){
+        if(companys[names.indexOf(lines[0].text)]){
+            alert(lines[0].text)
+        }        
     }
 }
 
@@ -77,11 +119,11 @@ const tick = async () => {
 
 
     // tesseract
-    const { data: { words } } = await worker.recognize(canvasTest);
+    const { data: { lines } } = await worker.recognize(canvasTest);
     //const regex = /[a-zA-Z0-9]/gi;
     //const scannedText = text && text.match(regex) && text.match(regex).filter(x => x).join("");
 
-    processTest(words)
+    processTest(lines)
     requestAnimationFrame(tick);
     
 }
