@@ -80,8 +80,8 @@ const scanning = async () => {
     video.srcObject = stream
     video.play()
     await worker.load()
-    await worker.loadLanguage("eng")
-    await worker.initialize("eng")
+    await worker.loadLanguage("deu")
+    await worker.initialize("deu")
     requestAnimationFrame(tick)
 }
 
@@ -90,6 +90,7 @@ const processTest = async (lines) => {
     const name = line1.substring(0, line1.length-1)
     const line2 = lines[1].text
     const company = line2.substring(0, line2.length-1)
+    console.log(name)
     if(names.includes(name)){
         console.log(name)
         console.log(company)
